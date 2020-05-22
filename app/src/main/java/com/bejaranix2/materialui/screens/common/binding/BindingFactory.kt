@@ -1,26 +1,23 @@
 package com.bejaranix2.materialui.screens.common.binding
 
-import android.app.Activity
-import androidx.databinding.DataBindingUtil
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.annotation.Nullable
 import androidx.databinding.ViewDataBinding
-import com.bejaranix2.materialui.R
 import com.bejaranix2.materialui.databinding.ActivityMainBinding
+import com.bejaranix2.materialui.databinding.FragmentInitialBinding
+import com.bejaranix2.materialui.databinding.FragmentNextBinding
 import java.lang.IllegalArgumentException
 
-class BindingFactory(private val activity:Activity){
+class BindingFactory(private val inflater: LayoutInflater){
 
-    private val layout = mapOf(
-        ActivityMainBinding::class.java to R.layout.activity_main
-    )
-
-    fun <T: ViewDataBinding> newInstance(clazz: Class<T>): T{
-        for(pair in layout){
-            val layoutVal = pair.value
-            if(clazz == pair.key){
-                return DataBindingUtil.setContentView(activity, layoutVal)
-            }
-        }
-        throw IllegalArgumentException("Binding class does not exists")
+    fun <T: ViewDataBinding> newInstance(clazz: Class<T>,@Nullable container: ViewGroup?): T{
+        return when(clazz){
+            ActivityMainBinding::class.java -> ActivityMainBinding.inflate(inflater)
+            FragmentInitialBinding::class.java -> FragmentInitialBinding.inflate(inflater, container, false)
+            FragmentNextBinding::class.java -> FragmentNextBinding.inflate(inflater,container,false)
+            else -> throw IllegalArgumentException("Binding class does not exists")
+        } as T
     }
 
 }

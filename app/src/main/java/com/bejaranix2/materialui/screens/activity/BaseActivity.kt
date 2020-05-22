@@ -9,16 +9,15 @@ import java.lang.RuntimeException
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    private var mIsInjectorUsed = false
+    var mActivityComponent: ActivityComponent? = null
 
     private fun getApplicationComponent() = (application as MainApplication).applicationComponent
 
-    fun getActivityComponent(): ActivityComponent{
-        if(!mIsInjectorUsed){
-            return getApplicationComponent()
+    fun getActivityComponent(): ActivityComponent?{
+        if(mActivityComponent == null){
+            mActivityComponent = getApplicationComponent()
                 .newActivityModule(ActivityModule(this), BindingModule())
-        }else{
-            throw RuntimeException("getActivityComponent only can be called once")
         }
+        return mActivityComponent
     }
 }

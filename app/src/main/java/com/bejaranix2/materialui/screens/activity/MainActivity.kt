@@ -1,6 +1,8 @@
 package com.bejaranix2.materialui.screens.activity
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.bejaranix2.materialui.R
 import com.bejaranix2.materialui.databinding.ActivityMainBinding
@@ -16,17 +18,10 @@ class MainActivity : BaseActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        getActivityComponent().inject(this)
-        toolbarViewManager = ToolbarViewManagerImpl(bindingFactory.newInstance(ActivityMainBinding::class.java))
-        toolbarViewManager.setToolbarGroup(ToolbarGroup.EXAMPLE)
-        toolbarViewManager.getToolbarListener().observe(this, Observer {
-            when(it){
-                ToolbarEventEnum.EXAMPLE_ITEM ->         toolbarViewManager.setToolbarGroup(ToolbarGroup.ANOTHER_EXAMPLE)
-                ToolbarEventEnum.ANOTHER_EXAMPLE_ITEM -> toolbarViewManager.setToolbarGroup(ToolbarGroup.EXAMPLE)
-            }
-        } )
-
+        getActivityComponent()?.inject(this)
+        val binding:ActivityMainBinding = bindingFactory.newInstance(ActivityMainBinding::class.java, null)
+        toolbarViewManager = ToolbarViewManagerImpl(binding)
+        setContentView(binding.root)
     }
 
 }

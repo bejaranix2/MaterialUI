@@ -1,5 +1,6 @@
 package com.bejaranix2.materialui.screens.activity
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.bejaranix2.materialui.databinding.ActivityMainBinding
 import com.bejaranix2.materialui.screens.common.viewmanager.BaseViewManager
@@ -8,16 +9,23 @@ class ToolbarViewManagerImpl : BaseViewManager, ToolbarViewManager{
 
     private val toolbarLister = MutableLiveData<ToolbarEventEnum>()
 
+    private val navigationListener = MutableLiveData(false)
+
     private val binding: ActivityMainBinding
 
     constructor(binding: ActivityMainBinding){
         this.binding = binding
         setRootView(binding.root)
         createItemListener()
+        createNavigationListener()
     }
 
     override fun getToolbarListener(): MutableLiveData<ToolbarEventEnum> {
         return toolbarLister
+    }
+
+    override fun getNavigationListener(): MutableLiveData<Boolean> {
+        return navigationListener
     }
 
     override fun setToolbarGroup(vararg toolbarGroup: ToolbarGroup) {
@@ -37,6 +45,13 @@ class ToolbarViewManagerImpl : BaseViewManager, ToolbarViewManager{
         binding.toolbar.setOnMenuItemClickListener{ it ->
             toolbarLister.value = ToolbarEventEnum.valueOf(it.itemId)
             true
+        }
+    }
+
+    private fun createNavigationListener(){
+        binding.toolbar.setNavigationOnClickListener {
+            navigationListener.value = true
+            navigationListener.value = false
         }
     }
 

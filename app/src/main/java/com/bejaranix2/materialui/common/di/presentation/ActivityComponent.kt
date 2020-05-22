@@ -6,4 +6,5 @@ import dagger.Subcomponent
 @Subcomponent(modules = [ActivityModule::class, BindingModule::class])
 interface ActivityComponent {
     fun inject(activity: MainActivity)
+    fun newFragmentComponent(fragmentModule: FragmentModule):FragmentComponent
 }

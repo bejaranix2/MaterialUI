@@ -6,6 +6,6 @@ interface ToolbarViewManager {
 
     fun getToolbarListener():MutableLiveData<ToolbarEventEnum>
     fun getNavigationListener():MutableLiveData<Boolean>
-
+    fun setTitle(title:String)
     fun setToolbarGroup(vararg toolbarGroup: ToolbarGroup)
 }

@@ -28,7 +28,9 @@ class InitialFragment : BaseFragment() {
     @Inject
     lateinit var bindingFactory: BindingFactory
 
-    lateinit var fragmentInitialBinding: FragmentInitialBinding
+    private lateinit var fragmentInitialBinding: FragmentInitialBinding
+
+    private lateinit var initialFragmentManager: InitialFragmentManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,13 +43,7 @@ class InitialFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        toolbarViewManager.setToolbarGroup(ToolbarGroup.EXAMPLE)
-        toolbarViewManager.getNavigationListener().observe(viewLifecycleOwner, Observer {
-            if(it) {
-                NavHostFragment.findNavController(this)
-                    .navigate(InitialFragmentDirections.actionInitialFragmentToNextFragment())
-            }
-        })
+        initialFragmentManager = InitialFragmentManager(fragmentInitialBinding, toolbarViewManager, this)
     }
 
 }

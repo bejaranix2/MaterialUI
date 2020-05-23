@@ -3,13 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:id="@+id/example_group">
         <item
+            android:id="@+id/share_item"
+            android:title="@string/share"
+            android:icon="@drawable/ic_share_black_24dp"
+            app:showAsAction="always"
+            >
+        </item>
+
+        <item
             android:id="@+id/example_item"
             android:title="@string/example"
             android:icon="@drawable/ic_settings_black_24dp"
             >
         </item>
+
     </group>
     <group android:id="@+id/another_example_group">
+        <item
+            android:id="@+id/search_item"
+            android:title="@string/search"
+            android:icon="@drawable/ic_search_black_24dp"
+            app:showAsAction="always|collapseActionView"
+            app:actionViewClass="android.widget.SearchView"
+            >
+        </item>
+
         <item
             android:id="@+id/another_example_item"
             android:title="@string/another_example"

@@ -1,6 +1,7 @@
 package com.bejaranix2.materialui.common.di.presentation
 
 import android.app.Application
+import android.content.Context
 import com.bejaranix2.materialui.common.di.application.ApplicationComponent
 import com.bejaranix2.materialui.screens.activity.ToolbarViewManager
 import com.bejaranix2.materialui.screens.fragment.InitialFragment.InitialFragment
@@ -13,5 +14,4 @@ import dagger.Subcomponent
 interface FragmentComponent {
     fun inject(initialFragment: InitialFragment)
     fun inject(nextFragment: NextFragment)
-
 }

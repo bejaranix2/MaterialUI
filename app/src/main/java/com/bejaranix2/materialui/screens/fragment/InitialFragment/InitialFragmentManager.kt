@@ -11,6 +11,7 @@ import com.bejaranix2.materialui.screens.activity.ToolbarGroup
 import com.bejaranix2.materialui.screens.activity.ToolbarViewManager
 import com.bejaranix2.materialui.screens.common.viewmanager.BaseViewManager
 import com.bejaranix2.materialui.screens.fragment.BaseFragment
+import com.google.android.material.snackbar.Snackbar
 
 class InitialFragmentManager : BaseViewManager {
     private var mFragment: BaseFragment
@@ -38,7 +39,13 @@ class InitialFragmentManager : BaseViewManager {
                 Toast.makeText(mFragment.context, "Example clicked", Toast.LENGTH_SHORT).show()
             }
         })
-
+        mFragmentInitialBinding.root.setOnClickListener {
+            val snackbar =Snackbar.make(mFragmentInitialBinding.root, "Hello", Snackbar.LENGTH_INDEFINITE)
+            snackbar.setAction("Undo") {
+                snackbar.dismiss()
+            }
+            snackbar.show()
+        }
     }
 
     private fun viewConfiguration() {

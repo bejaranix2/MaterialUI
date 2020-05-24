@@ -2,11 +2,8 @@ package com.bejaranix2.materialui.screens.activity
 
 import android.content.Intent
 import android.util.Log
-import android.view.View
 import android.widget.SearchView
-import androidx.appcompat.widget.ShareActionProvider
 import androidx.core.content.ContextCompat.startActivity
-import androidx.core.view.MenuItemCompat
 import androidx.lifecycle.MutableLiveData
 import com.bejaranix2.materialui.R
 import com.bejaranix2.materialui.databinding.ActivityMainBinding
@@ -28,7 +25,6 @@ class ToolbarViewManagerImpl : BaseViewManager, ToolbarViewManager{
         createNavigationListener()
         createSearchListener()
         createSharedListener()
-        disableCollapsingToolbar()
     }
 
     override fun getToolbarListener(): MutableLiveData<ToolbarEventEnum> {
@@ -40,7 +36,6 @@ class ToolbarViewManagerImpl : BaseViewManager, ToolbarViewManager{
     }
 
     override fun setTitle(title: String) {
-        binding.collapsingToolbar.title = title
         binding.toolbar.title = title
     }
 
@@ -106,12 +101,6 @@ class ToolbarViewManagerImpl : BaseViewManager, ToolbarViewManager{
         }
 
     }
-
-    private fun disableCollapsingToolbar(){
-        binding.appBarLayout.setExpanded(false, true)
-        binding.toolbarImage.visibility = View.GONE
-    }
-
 
     private fun shareInfo(){
         val sendIntent: Intent = Intent().apply {

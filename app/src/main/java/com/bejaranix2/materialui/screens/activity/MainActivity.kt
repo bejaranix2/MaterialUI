@@ -25,18 +25,6 @@ class MainActivity : BaseActivity(){
         binding = bindingFactory.newInstance(ActivityMainBinding::class.java, null)
         toolbarViewManager = ToolbarViewManagerImpl(binding)
         setContentView(binding.root)
-        bottomView()
-    }
-
-    private fun bottomView(){
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener{
-            Log.d("bottom", "${it.itemId}")
-            when(it.itemId){
-                R.id.first_item -> binding.simpleText.text = "First"
-                R.id.second_item -> binding.simpleText.text = "Second"
-            }
-            false
-        }
     }
 
 }

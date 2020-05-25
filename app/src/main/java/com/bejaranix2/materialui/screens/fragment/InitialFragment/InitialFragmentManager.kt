@@ -12,6 +12,7 @@ import com.bejaranix2.materialui.screens.activity.ToolbarViewManager
 import com.bejaranix2.materialui.screens.common.viewmanager.BaseViewManager
 import com.bejaranix2.materialui.screens.fragment.BaseFragment
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayout
 
 class InitialFragmentManager : BaseViewManager {
     private var mFragment: BaseFragment
@@ -51,6 +52,29 @@ class InitialFragmentManager : BaseViewManager {
     private fun viewConfiguration() {
         mToolbarViewManager.setToolbarGroup(ToolbarGroup.EXAMPLE)
         mToolbarViewManager.setTitle(mFragment.getString(R.string.initial_fragment_title))
+        mFragmentInitialBinding.tabLayout.addTab(mFragmentInitialBinding.tabLayout.newTab().setText("Share").setIcon(R.drawable.ic_share_black_24dp))
+        mFragmentInitialBinding.tabLayout.addTab(mFragmentInitialBinding.tabLayout.newTab().setText("Refresh").setIcon(R.drawable.ic_refresh_black_24dp),0)
+        mFragmentInitialBinding.tabLayout.addTab(mFragmentInitialBinding.tabLayout.newTab().setText("XD").setIcon(R.drawable.ic_menu_black_24dp))
+        mFragmentInitialBinding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                tab?.let {
+                    Log.d("Reselected", it.text.toString())
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                tab?.let {
+                    Log.d("unselected", it.text.toString())
+                }
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.let {
+                    Log.d("selected", it.text.toString())
+                }
+            }
+
+        })
     }
 
 }

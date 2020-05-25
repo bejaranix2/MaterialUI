@@ -8,4 +8,8 @@
     <string name="initial_fragment_title">Initial Fragment</string>
     <string name="search">Search</string>
     <string name="share">Share</string>
+    <string name="settings_title">Setting</string>
+    <string name="send_title">Send</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_closed">Closed</string>
 </resources>

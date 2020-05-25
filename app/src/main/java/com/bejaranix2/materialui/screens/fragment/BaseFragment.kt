@@ -14,11 +14,14 @@ abstract class BaseFragment: Fragment() {
     fun getFragmentComponent():FragmentComponent? {
         if(mFragmentComponent==null) {
             mFragmentComponent = getActivityComponent()
-                ?.newFragmentComponent(FragmentModule((activity as MainActivity).toolbarViewManager))
+                ?.newFragmentComponent(FragmentModule(
+                    getMainActivity().toolbarViewManager, getMainActivity().navigationViewManager))
         }
         return mFragmentComponent
     }
 
-    private fun getActivityComponent():ActivityComponent? = (activity as MainActivity).getActivityComponent()
+    private fun getActivityComponent():ActivityComponent? = getMainActivity().getActivityComponent()
+
+    private fun getMainActivity():MainActivity = activity as MainActivity
 
 }

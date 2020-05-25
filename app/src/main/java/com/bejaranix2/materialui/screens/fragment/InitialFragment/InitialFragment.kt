@@ -37,6 +37,9 @@ class InitialFragment : BaseFragment() {
     @Inject
     lateinit var bindingFactory: BindingFactory
 
+    @Inject
+    lateinit var inflater: LayoutInflater
+
     private lateinit var fragmentInitialBinding: FragmentInitialBinding
 
     private lateinit var initialFragmentManager: InitialFragmentManager
@@ -52,7 +55,7 @@ class InitialFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initialFragmentManager = InitialFragmentManager(fragmentInitialBinding, toolbarViewManager, this)
+        initialFragmentManager = InitialFragmentManager(fragmentInitialBinding, toolbarViewManager, this, inflater)
         lifecycleScope.launch {
             navigationViewManager.getNavigationListener().collect {
                 when(it){

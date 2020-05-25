@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -12,7 +12,21 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="windowNoTitle">true</item>
     </style>
-    
+
+    <style name="initialButton" parent="TextAppearance.MaterialComponents.Button">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="iconTint">@color/colorAccent</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="rippleColor">@color/green</item>
+        <item name="cornerRadius">10sp</item>
+    </style>
+
+    <style name="initialButtonIcon" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="iconTint">@color/green</item>
+        <item name="android:textColor">@color/green</item>
+
+    </style>
+
     <style name="popupTheme" parent="Theme.AppCompat.Light">
         <item name="android:background">@color/popupMenuColor</item>
         <item name="android:textColor">@color/colorAccent</item>

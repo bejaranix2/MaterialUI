@@ -27,6 +27,9 @@ class NextFragment : BaseFragment() {
     lateinit var bindingFactory: BindingFactory
 
     lateinit var fragmentNextBinding: FragmentNextBinding
+
+    lateinit var nextFragmentManager: NextFragmentManager
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,12 +41,7 @@ class NextFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        toolbarViewManager.setToolbarGroup(ToolbarGroup.ANOTHER_EXAMPLE)
-        toolbarViewManager.getNavigationListener().observe(viewLifecycleOwner, Observer {
-            if(it) {
-                NavHostFragment.findNavController(this).navigateUp()
-            }
-        })
+        nextFragmentManager = NextFragmentManager(fragmentNextBinding, this, toolbarViewManager)
     }
 
 

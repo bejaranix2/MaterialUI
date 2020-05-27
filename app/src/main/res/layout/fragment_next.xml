@@ -221,6 +221,7 @@
         android:backgroundTint="@color/colorPrimaryDark"
         app:fabSize="normal"
         android:src="@drawable/ic_settings_black_24dp"
+        android:onClick="@{manager::nextFragment}"
         >
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 

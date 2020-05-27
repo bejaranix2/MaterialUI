@@ -10,6 +10,8 @@ import android.view.View
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.NavHost
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import com.bejaranix2.materialui.R
 import com.bejaranix2.materialui.databinding.FragmentNextBinding
@@ -19,9 +21,9 @@ import com.bejaranix2.materialui.screens.common.viewmanager.BaseViewManager
 import com.google.android.material.textfield.TextInputEditText
 import java.text.DateFormat
 import java.util.*
+import javax.inject.Inject
 
 class NextFragmentManager: BaseViewManager {
-
 
     private var mToolbarManager: ToolbarViewManager
     private var mFragmentNextBinding: FragmentNextBinding
@@ -146,5 +148,8 @@ class NextFragmentManager: BaseViewManager {
 
     }
 
+    fun nextFragment(v:View){
+        Navigation.findNavController(mFragment.requireView()).navigate(NextFragmentDirections.actionNextFragmentToViewPagerFragment())
+    }
 
 }

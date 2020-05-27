@@ -18,5 +18,14 @@
         android:id="@+id/nextFragment"
         android:name="com.bejaranix2.materialui.screens.fragment.nextfragment.NextFragment"
         android:label="fragment_next"
-        tools:layout="@layout/fragment_next" />
+        tools:layout="@layout/fragment_next" >
+        <action
+            android:id="@+id/action_nextFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.bejaranix2.materialui.screens.fragment.viewpagerfragment.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" />
 </navigation>

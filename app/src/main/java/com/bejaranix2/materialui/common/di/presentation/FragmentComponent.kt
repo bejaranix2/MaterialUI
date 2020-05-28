@@ -1,5 +1,6 @@
 package com.bejaranix2.materialui.common.di.presentation
 
+import com.bejaranix2.materialui.screens.fragment.animationfragment.AnimationFragment
 import com.bejaranix2.materialui.screens.fragment.initialfragment.InitialFragment
 import com.bejaranix2.materialui.screens.fragment.nextfragment.NextFragment
 import com.bejaranix2.materialui.screens.fragment.viewpagerfragment.ViewPagerFragment
@@ -10,4 +11,5 @@ interface FragmentComponent {
     fun inject(initialFragment: InitialFragment)
     fun inject(nextFragment: NextFragment)
     fun inject(viewPagerFragment: ViewPagerFragment)
+    fun inject(animationFragment: AnimationFragment)
 }

@@ -1,7 +1,9 @@
 package com.bejaranix2.materialui.screens.fragment.viewpagerfragment
 
 import android.view.LayoutInflater
+import android.view.View
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import com.bejaranix2.materialui.R
 import com.bejaranix2.materialui.common.adapter.ZoomOutPageTransformer
 import com.bejaranix2.materialui.databinding.FragmentViewPagerBinding
@@ -18,6 +20,7 @@ class ViewPagerManager: BaseViewManager {
         mBinding = binding
         mFragment = fragment
         mInflater = inflater
+        mBinding.manager = this
         configViewPager()
     }
 
@@ -32,5 +35,8 @@ class ViewPagerManager: BaseViewManager {
         mBinding.viewPager.setPageTransformer(ZoomOutPageTransformer())
     }
 
+    fun nextView(v: View){
+        Navigation.findNavController(mFragment.requireView()).navigate(ViewPagerFragmentDirections.actionViewPagerFragmentToAnimationFragment())
+    }
 
 }

@@ -4,10 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.Nullable
 import androidx.databinding.ViewDataBinding
-import com.bejaranix2.materialui.databinding.ActivityMainBinding
-import com.bejaranix2.materialui.databinding.FragmentInitialBinding
-import com.bejaranix2.materialui.databinding.FragmentNextBinding
-import com.bejaranix2.materialui.databinding.FragmentViewPagerBinding
+import com.bejaranix2.materialui.databinding.*
 import java.lang.IllegalArgumentException
 
 class BindingFactory(private val inflater: LayoutInflater){
@@ -18,6 +15,7 @@ class BindingFactory(private val inflater: LayoutInflater){
             FragmentInitialBinding::class.java -> FragmentInitialBinding.inflate(inflater, container, false)
             FragmentNextBinding::class.java -> FragmentNextBinding.inflate(inflater,container,false)
             FragmentViewPagerBinding::class.java -> FragmentViewPagerBinding.inflate(inflater,container,false)
+            FragmentAnimationBinding::class.java -> FragmentAnimationBinding.inflate(inflater,container,false)
             else -> throw IllegalArgumentException("Binding class does not exists")
         } as T
     }

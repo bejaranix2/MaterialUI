@@ -12,7 +12,10 @@
         tools:layout="@layout/fragment_initial" >
         <action
             android:id="@+id/action_initialFragment_to_nextFragment"
-            app:destination="@id/nextFragment" />
+            app:destination="@id/nextFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            />
     </fragment>
     <fragment
         android:id="@+id/nextFragment"
@@ -27,5 +30,14 @@
         android:id="@+id/viewPagerFragment"
         android:name="com.bejaranix2.materialui.screens.fragment.viewpagerfragment.ViewPagerFragment"
         android:label="fragment_view_pager"
-        tools:layout="@layout/fragment_view_pager" />
+        tools:layout="@layout/fragment_view_pager" >
+        <action
+            android:id="@+id/action_viewPagerFragment_to_animationFragment"
+            app:destination="@id/animationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/animationFragment"
+        android:name="com.bejaranix2.materialui.screens.fragment.animationfragment.AnimationFragment"
+        android:label="fragment_animation"
+        tools:layout="@layout/fragment_animation" />
 </navigation>

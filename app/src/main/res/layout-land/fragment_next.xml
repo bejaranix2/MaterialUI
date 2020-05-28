@@ -10,7 +10,6 @@
     </data>
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:background="@color/green"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -111,8 +110,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/switchMaterial"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:chipSpacing="8sp"
             app:singleSelection="true"
             android:id="@+id/chipGroupNext"
@@ -150,10 +149,10 @@
         </com.google.android.material.chip.ChipGroup>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/usernameText"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chipGroupNext"
             >
             <com.google.android.material.textfield.TextInputEditText
@@ -169,10 +168,10 @@
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/passText"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/usernameText"
             >
             <requestFocus></requestFocus>
@@ -192,10 +191,10 @@
         <SeekBar
             android:paddingTop="20dp"
             android:id="@+id/seekBarNext"
-            android:layout_width="match_parent"
+            android:layout_width="400sp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/passText"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:max="500"
             android:progress="250"
             android:progressDrawable="@drawable/custom_slider"

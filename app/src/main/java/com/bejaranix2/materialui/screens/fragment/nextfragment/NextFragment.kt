@@ -1,12 +1,15 @@
 package com.bejaranix2.materialui.screens.fragment.nextfragment
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.doOnPreDraw
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
+import com.bejaranix2.materialui.R
 
 import com.bejaranix2.materialui.databinding.FragmentNextBinding
 import com.bejaranix2.materialui.screens.activity.ToolbarGroup
@@ -30,6 +33,7 @@ class NextFragment : BaseFragment() {
 
     lateinit var nextFragmentManager: NextFragmentManager
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,6 +47,5 @@ class NextFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         nextFragmentManager = NextFragmentManager(fragmentNextBinding, this, toolbarViewManager)
     }
-
 
 }

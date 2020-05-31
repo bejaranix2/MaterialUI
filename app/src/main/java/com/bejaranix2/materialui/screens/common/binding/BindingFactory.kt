@@ -16,6 +16,7 @@ class BindingFactory(private val inflater: LayoutInflater){
             FragmentNextBinding::class.java -> FragmentNextBinding.inflate(inflater,container,false)
             FragmentViewPagerBinding::class.java -> FragmentViewPagerBinding.inflate(inflater,container,false)
             FragmentAnimationBinding::class.java -> FragmentAnimationBinding.inflate(inflater,container,false)
+            FragmentMotionBinding::class.java -> FragmentMotionBinding.inflate(inflater, container, false)
             else -> throw IllegalArgumentException("Binding class does not exists")
         } as T
     }

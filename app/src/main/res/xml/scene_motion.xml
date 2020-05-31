@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Transition
+        android:id="@+id/transition"
+        motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/end"
+        motion:duration="1000">
+        <OnSwipe app:touchAnchorId="@id/settingsImage" />
+
+        <!-- OnSwipe
+            motion:touchAnchorId="@+id/button"
+            motion:touchAnchorSide="right"
+            motion:dragDirection="dragRight" /-->
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/settingsImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+        </Constraint>
+        <Constraint
+            android:id="@+id/rightImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+        </Constraint>
+        <Constraint
+            android:id="@+id/leftImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/settingsImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/leftImage"
+            app:layout_constraintEnd_toStartOf="@id/rightImage"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+        </Constraint>
+        <Constraint
+            android:id="@+id/rightImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/settingsImage"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+        </Constraint>
+        <Constraint
+            android:id="@+id/leftImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintStart_toStartOf="@id/settingsImage"
+            app:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            >
+        </Constraint>
+    </ConstraintSet>
+
+</MotionScene>

@@ -39,5 +39,14 @@
         android:id="@+id/animationFragment"
         android:name="com.bejaranix2.materialui.screens.fragment.animationfragment.AnimationFragment"
         android:label="fragment_animation"
-        tools:layout="@layout/fragment_animation" />
+        tools:layout="@layout/fragment_animation" >
+        <action
+            android:id="@+id/action_animationFragment_to_motionFragment"
+            app:destination="@id/motionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/motionFragment"
+        android:name="com.bejaranix2.materialui.screens.fragment.motionfragment.MotionFragment"
+        android:label="fragment_motion"
+        tools:layout="@layout/fragment_motion" />
 </navigation>

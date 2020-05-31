@@ -2,6 +2,7 @@ package com.bejaranix2.materialui.common.di.presentation
 
 import com.bejaranix2.materialui.screens.fragment.animationfragment.AnimationFragment
 import com.bejaranix2.materialui.screens.fragment.initialfragment.InitialFragment
+import com.bejaranix2.materialui.screens.fragment.motionfragment.MotionFragment
 import com.bejaranix2.materialui.screens.fragment.nextfragment.NextFragment
 import com.bejaranix2.materialui.screens.fragment.viewpagerfragment.ViewPagerFragment
 import dagger.Subcomponent
@@ -12,4 +13,5 @@ interface FragmentComponent {
     fun inject(nextFragment: NextFragment)
     fun inject(viewPagerFragment: ViewPagerFragment)
     fun inject(animationFragment: AnimationFragment)
+    fun inject(motionFragment: MotionFragment)
 }

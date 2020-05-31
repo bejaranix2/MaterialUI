@@ -2,6 +2,7 @@ package com.bejaranix2.materialui.screens.fragment.animationfragment
 
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.view.View
+import androidx.navigation.Navigation
 import com.bejaranix2.materialui.R
 import com.bejaranix2.materialui.databinding.FragmentAnimationBinding
 import com.bejaranix2.materialui.screens.activity.ToolbarViewManager
@@ -34,6 +35,9 @@ class AnimationManager:BaseViewManager {
         mAnimation.start()
     }
 
+    fun nextFragment(v:View){
+        Navigation.findNavController(mFragmentAnimationBinding.root).navigate(AnimationFragmentDirections.actionAnimationFragmentToMotionFragment())
+    }
 
 
 }

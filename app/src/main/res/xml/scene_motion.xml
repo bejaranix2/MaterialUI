@@ -11,7 +11,9 @@
             app:targetId="@id/settingsImage"
             app:clickAction="toggle"
             / -->
-        <OnSwipe app:touchAnchorId="@id/settingsImage" />
+        <OnSwipe
+            app:touchAnchorSide="right"
+            />
         <KeyFrameSet>
             <KeyPosition
                 app:framePosition="25"
@@ -34,17 +36,33 @@
 
             <!-- KeyAttributes modify attributes during motion -->
             <KeyAttribute
+                app:framePosition="0"
+                app:motionTarget="@id/settingsImage"
+                >
+                <CustomAttribute
+                    app:attributeName="colorFilter"
+                    app:customColorValue="#000000"
+                    />
+            </KeyAttribute>
+
+            <KeyAttribute
                 app:framePosition="50"
                 app:motionTarget="@id/settingsImage"
-                android:scaleY="2.0"
-                android:scaleX="2.0"
-                android:rotation="-360"
-                />
+                >
+                <CustomAttribute
+                    app:attributeName="colorFilter"
+                    app:customColorValue="#FFB612"
+                    />
+            </KeyAttribute>
             <KeyAttribute
                 app:framePosition="100"
                 app:motionTarget="@id/settingsImage"
-                android:rotation="-720"
-                />
+                >
+                <CustomAttribute
+                    app:attributeName="colorFilter"
+                    app:customColorValue="#000000"
+                    />
+            </KeyAttribute>
         </KeyFrameSet>
         <!-- KeyFrameSet>
             <KeyPosition

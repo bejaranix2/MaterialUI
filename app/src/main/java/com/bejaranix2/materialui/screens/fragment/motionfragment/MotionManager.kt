@@ -16,10 +16,5 @@ class MotionManager:BaseViewManager {
     }
 
     fun transitionClick(v: View){
-        mBinding.motionLayout.apply {
-            Log.d("transitionClic", "transitionClic")
-            setTransition(R.id.transition)
-            transitionToEnd()
-        }
     }
 }

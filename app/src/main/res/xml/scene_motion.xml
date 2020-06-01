@@ -4,40 +4,108 @@
     xmlns:motion="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <Transition
-        android:id="@+id/transition"
-        motion:constraintSetStart="@+id/start"
-        motion:constraintSetEnd="@+id/end"
-        motion:duration="1000">
+        app:constraintSetStart="@+id/start"
+        app:constraintSetEnd="@+id/end"
+        app:duration="1000">
+        <!-- OnClick
+            app:targetId="@id/settingsImage"
+            app:clickAction="toggle"
+            / -->
         <OnSwipe app:touchAnchorId="@id/settingsImage" />
+        <KeyFrameSet>
+            <KeyPosition
+                app:framePosition="25"
+                app:motionTarget="@id/settingsImage"
+                app:keyPositionType="parentRelative"
+                app:percentY="0.6"
+                />
+            <KeyPosition
+                app:framePosition="50"
+                app:motionTarget="@id/settingsImage"
+                app:keyPositionType="parentRelative"
+                app:percentY="0.5"
+                />
+            <KeyPosition
+                app:framePosition="75"
+                app:motionTarget="@id/settingsImage"
+                app:keyPositionType="parentRelative"
+                app:percentY="0.6"
+                />
 
-        <!-- OnSwipe
-            motion:touchAnchorId="@+id/button"
-            motion:touchAnchorSide="right"
-            motion:dragDirection="dragRight" /-->
+            <!-- KeyAttributes modify attributes during motion -->
+            <KeyAttribute
+                app:framePosition="50"
+                app:motionTarget="@id/settingsImage"
+                android:scaleY="2.0"
+                android:scaleX="2.0"
+                android:rotation="-360"
+                />
+            <KeyAttribute
+                app:framePosition="100"
+                app:motionTarget="@id/settingsImage"
+                android:rotation="-720"
+                />
+        </KeyFrameSet>
+        <!-- KeyFrameSet>
+            <KeyPosition
+                app:framePosition="25"
+                app:motionTarget="@id/settingsImage"
+                app:keyPositionType="parentRelative"
+                app:percentX="0.1"
+                app:percentY="0.1"
+                />
+            <KeyPosition
+                app:framePosition="50"
+                app:motionTarget="@id/settingsImage"
+                app:keyPositionType="parentRelative"
+                app:percentX="0.9"
+                app:percentY="0.9"
+                />
+
+            <KeyPosition
+                app:framePosition="75"
+                app:motionTarget="@id/settingsImage"
+                app:keyPositionType="parentRelative"
+                app:percentX="0.2"
+                app:percentY="0.2"
+                />
+
+            <KeyPosition
+                app:framePosition="25"
+                app:motionTarget="@id/settingsImage"
+                app:keyPositionType="parentRelative"
+                app:percentY="0.6"
+                app:percentX="0.1"
+                />
+            <KeyPosition
+                app:framePosition="50"
+                app:motionTarget="@id/settingsImage"
+                app:keyPositionType="parentRelative"
+                app:percentY="0.5"
+                app:percentX="0.3"
+                />
+            <KeyPosition
+                app:framePosition="75"
+                app:motionTarget="@id/settingsImage"
+                app:keyPositionType="parentRelative"
+                app:percentY="0.6"
+                app:percentX="0.1"
+                />
+
+        </KeyFrameSet-->
     </Transition>
-
     <ConstraintSet android:id="@+id/start">
         <Constraint
             android:id="@+id/settingsImage"
             android:layout_width="80dp"
             android:layout_height="80dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             >
         </Constraint>
         <Constraint
-            android:id="@+id/rightImage"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            >
-        </Constraint>
-        <Constraint
-            android:id="@+id/leftImage"
+            android:id="@id/leftImage"
+            android:alpha="0.0"
             android:layout_width="80dp"
             android:layout_height="80dp"
 
@@ -54,29 +122,22 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@id/leftImage"
-            app:layout_constraintEnd_toStartOf="@id/rightImage"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             >
         </Constraint>
         <Constraint
-            android:id="@+id/rightImage"
+            android:id="@id/leftImage"
+            android:alpha="1.0"
             android:layout_width="80dp"
             android:layout_height="80dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/settingsImage"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+
             >
         </Constraint>
-        <Constraint
-            android:id="@+id/leftImage"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            app:layout_constraintStart_toStartOf="@id/settingsImage"
-            app:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"
-            >
-        </Constraint>
+
     </ConstraintSet>
 
 </MotionScene>

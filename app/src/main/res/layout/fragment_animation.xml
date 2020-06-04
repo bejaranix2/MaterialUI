@@ -12,35 +12,22 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/animationImage"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="match_parent"
+        xmlns:custom="http://schemas.android.com/apk/res/com.bejaranix2.materialui"
+        >
+        <com.bejaranix2.materialui.screens.fragment.animationfragment.CircleView
+            android:id="@+id/circleView"
+            android:layout_height="0dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:onClick="@{manager::startAnimation}"
-            ></ImageView>
-
-        <ImageView
-            android:id="@+id/firstConfImage"
-            android:layout_width="80sp"
-            android:layout_height="80sp"
-            android:src="@drawable/ic_settings_black_24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/nextButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></ImageView>
-        <ImageView
-            android:id="@+id/secondConfImage"
-            android:layout_width="80sp"
-            android:layout_height="80sp"
-            android:src="@drawable/ic_settings_black_24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/firstConfImage"></ImageView>
+            custom:swipeStyle="roulette"
+           ></com.bejaranix2.materialui.screens.fragment.animationfragment.CircleView>
+
+
 
         <Button
             android:id="@+id/nextButton"

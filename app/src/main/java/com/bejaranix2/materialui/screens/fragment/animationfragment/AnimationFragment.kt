@@ -29,17 +29,21 @@ class AnimationFragment : BaseFragment() {
     @Inject
     lateinit var activity: Activity
 
+    @Inject
+    lateinit var inflater: LayoutInflater
+
     lateinit var manager:AnimationManager
     lateinit var flingManager:FlingAnimationManager
+    lateinit var binding:FragmentAnimationBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         getFragmentComponent()?.inject(this)
-        val binding = bindingFactory.newInstance(FragmentAnimationBinding::class.java, container)
-        manager = AnimationManager(toolbarViewManager, binding, this)
+        binding = bindingFactory.newInstance(FragmentAnimationBinding::class.java, container)
         flingManager = FlingAnimationManager(toolbarViewManager, binding, this, activity)
+        manager = AnimationManager(toolbarViewManager, binding, this, inflater)
         return binding.root
     }
 

@@ -6,6 +6,12 @@ import com.bejaranix2.materialui.databinding.CardItemBinding
 
 class SingleCicleAdapter(val data: ArrayList<SingleData>, val inflater: LayoutInflater): CircleAdapter<CircleAdapter.CircleViewHolder>() {
 
+
+    fun addElement(singleData: SingleData){
+        data.add(singleData)
+        notifyItemInsertedAtEnd()
+    }
+
     class ViewHolder(val v:CardItemBinding):CircleViewHolder(v.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -17,6 +23,7 @@ class SingleCicleAdapter(val data: ArrayList<SingleData>, val inflater: LayoutIn
     override fun onBindViewHolder(holder: CircleViewHolder, position: Int) {
         ( holder as ViewHolder).v.data = data[position]
     }
+
 }
 
 data class SingleData(val title:String, val text:String)

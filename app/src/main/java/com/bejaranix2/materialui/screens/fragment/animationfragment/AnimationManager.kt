@@ -1,11 +1,14 @@
 package com.bejaranix2.materialui.screens.fragment.animationfragment
 
 import android.animation.ValueAnimator
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.util.Log
 import android.view.*
 import android.view.animation.PathInterpolator
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.Navigation
 import com.bejaranix2.materialui.R
 import com.bejaranix2.materialui.databinding.FragmentAnimationBinding
@@ -26,8 +29,6 @@ class AnimationManager:BaseViewManager {
     private var factor = 0f
     private var mov = 0
     private var focusItem = 0
-    private var centerViewVer = 0f
-    private var centerViewHor = 0f
 
 
     constructor(
@@ -39,38 +40,10 @@ class AnimationManager:BaseViewManager {
         mFragmentAnimationBinding.manager = this
         mInflater = inflater
         configView()
-//        configAnimation()
     }
 
     private fun configView(){
         createCards()
-/*
-        mov = 0
-        val mDetector = GestureDetector(mFragment.context, ViewGestureListener())
-        mFragmentAnimationBinding.constraintLayout.viewTreeObserver.addOnGlobalLayoutListener(
-            object : ViewTreeObserver.OnGlobalLayoutListener {
-                override fun onGlobalLayout() {
-                    mFragmentAnimationBinding.constraintLayout.viewTreeObserver.removeOnGlobalLayoutListener(this)
-
-                    Log.d("configView", "$centerHeight, $centerWidth")
-                    createCards()
-                }
-            })
-
-        mFragmentAnimationBinding.constraintLayout.setOnTouchListener{ _, motionEvent ->
-            mDetector.onTouchEvent(motionEvent);
-        }*/
-    }
-
-    private fun configAnimation(){
-/*        mFragmentAnimationBinding.animationImage.apply {
-            setBackgroundResource(R.drawable.animation_drawable)
-            mAnimation = background as AnimatedVectorDrawable
-        }*/
-    }
-
-    fun startAnimation(v: View){
-        mAnimation.start()
     }
 
     fun nextFragment(v:View){
@@ -79,63 +52,76 @@ class AnimationManager:BaseViewManager {
 
 
     private fun createCards(){
-
-
-
         val listOfElem = arrayListOf<SingleData>()
-        for(x in 0 until  10){
-            listOfElem.add(SingleData("$x", "Content bla bla"))
-/*            var view = mInflater.inflate(R.layout.card_item, null)
-            view.findViewById<TextView>(R.id.text_msg).text = "$x"
-            view.setOnClickListener { moveObject(view) }
-            Log.d("View click", "viewClick")
-            viewArr.add( view)
-            mFragmentAnimationBinding.constraintLayout.addView(view)
-            if(x == 0){
-                centerViewHor = (view.width / 2).toFloat()
-                centerViewVer = (view.height / 2).toFloat()
-                
-            }*/
+        listOfElem.add(SingleData("0", "Content bla bla"))
+        listOfElem.add(SingleData("1", "khkjhjkli"))
+        listOfElem.add(SingleData("2", "uuu uuuu"))
+        listOfElem.add(SingleData("3", "xxx"))
+        listOfElem.add(SingleData("4", "kjhj -ghg"))
+        listOfElem.add(SingleData("5", "bah bah"))
+        listOfElem.add(SingleData("6", ":D"))
+        listOfElem.add(SingleData("7", "  -  "))
+        listOfElem.add(SingleData("8", "...."))
+        listOfElem.add(SingleData("9", "000000000"))
+        listOfElem.add(SingleData("10", "LL.**+LK"))
+        listOfElem.add(SingleData("11", "LL.**+LK"))
+        listOfElem.add(SingleData("12", "LL.**+LK"))
+        listOfElem.add(SingleData("13", "LL.**+LK"))
+        listOfElem.add(SingleData("14", "LL.**+LK"))
+
+        val adapter = SingleCicleAdapter(listOfElem,mInflater)
+
+        mFragmentAnimationBinding.circleView.mContext = mFragment.context
+        mFragmentAnimationBinding.circleView.mAdapter = adapter
+        mFragmentAnimationBinding.circleView.circleListener = object : CircleListener{
+            override fun deletedElementListener(
+                index: Int,
+                action: CircleView.DeleteAction
+            ): Boolean {
+                removeDialog(action)
+                return false
+            }
+
+            override fun currentSpinningPositionListener(current: Int) {
+                mFragmentAnimationBinding.text.text = "$current"
+            }
+
+            override fun stoppedSpinListener(current: Int) {
+                Toast.makeText(mFragment.context, "${listOfElem[current].title} - ${listOfElem[current].text}", Toast.LENGTH_SHORT).show()
+            }
 
         }
-        mFragmentAnimationBinding.circleView.mContext = mFragment.context
-        mFragmentAnimationBinding.circleView.mAdapter = SingleCicleAdapter(listOfElem,mInflater)
 
-        /*
-        centerHeight = mFragmentAnimationBinding.constraintLayout.height/2  - centerViewVer   .toInt()
-        
-        centerWidth = mFragmentAnimationBinding.constraintLayout.width/2 - centerViewHor  .toInt()
-        mFragmentAnimationBinding.constraintLayout.bringToFront();
-        mFragmentAnimationBinding.constraintLayout.invalidate();
-        factor = 2f / viewArr.size
-        mov = 0*/
+        mFragmentAnimationBinding.fixButton.setOnClickListener {
+            Toast.makeText(mFragment.context, "Fix", Toast.LENGTH_SHORT).show()
+            mFragmentAnimationBinding.circleView.fixPosition(5)
+            false
+        }
+
+        mFragmentAnimationBinding.addButton.setOnClickListener {
+            Toast.makeText(mFragment.context, "Add", Toast.LENGTH_SHORT).show()
+            mFragmentAnimationBinding.circleView?.apply {
+                adapter.addElement(SingleData("10", "LL.**+LK"))
+            }
+            false
+        }
+    }
+
+    fun removeDialog(action: CircleView.DeleteAction){
+        AlertDialog.Builder(mFragment.context)
+            .setTitle("do you want to delete the item?")
+            .setCancelable(false)
+            .setPositiveButton("YES", DialogInterface.OnClickListener { dialog, which ->
+                action.delete()
+            }).setNegativeButton("NO", DialogInterface.OnClickListener { dialog, which ->
+                action.undo()
+            })
+            .show()
     }
 
     fun moveObject(v:View){
         Log.d("moveobject", "move")
         focusItem = viewArr.size - (mov % viewArr.size)
-        /*ValueAnimator.ofFloat(0f,factor)
-            .apply {
-            duration = 5000
-            interpolator = PathInterpolator(0.25f, 0.1f, 0.25f, 1.0f)
-            addUpdateListener {
-                viewArr.forEachIndexed { index, view ->
-                    animateElem(view, index,it.animatedValue as Float )
-                }
-            }
-            start()
-        } */
-        /*
-        viewArr.forEachIndexed { index, view ->
-            mFragmentAnimationBinding.constraintLayout.bringToFront()
-            mFragmentAnimationBinding.constraintLayout.invalidate()
-
-            val relativePos = if((index - focusItem) < 0) viewArr.size - (focusItem - index) else (index - focusItem)
-            //Log.d("animateElem", "${viewArr.size-relativePos}, $relativePos")
-            v.translationZ = max(viewArr.size-relativePos, relativePos).toFloat() * 2
-            v.elevation = max(viewArr.size-relativePos, relativePos).toFloat() * 2
-            //Log.d("animateElem", "Position ${v.translationX}, ${v.translationY}")
-        }                      */
 
 
 
@@ -149,7 +135,6 @@ class AnimationManager:BaseViewManager {
              )
          }
 
-        //mov ++
     }
 
     private fun animateElem(v: View, index:Int,size:Int ,animatedValue: Float,mov: Int){
